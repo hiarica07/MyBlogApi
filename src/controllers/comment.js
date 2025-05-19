@@ -177,7 +177,7 @@ module.exports = {
 
     const data = await Comment.find({ blogId })
     .populate([
-      { path: "userId", select: "_id firstName lastName" }
+      { path: "userId", select: "_id firstName lastName username" }
     ]);
 
     res.status(200).send({
