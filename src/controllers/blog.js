@@ -150,5 +150,57 @@ module.exports = {
             result,
         })
     },
+    // User's own Blogs
+    getMyBlogsData: async (req, res) => {
+    /*
+      #swagger.tags = ["Blogs"]
+      #swagger.summary = "Get Single User Blogs"
+      #swagger.description = "Fetch all blogs for a specific user."
+      #swagger.parameters['userId'] = {
+          in: 'path',
+          required: true,
+          description: 'ID of the user to fetch blogs for.',
+          type: 'string',
+        }
+    */
+    // console.log(req.user);
+    const userId = req.user?._id.toString();
+    // console.log(userId);
 
+    const data = await res.getModelList(Blog, {userId}, [
+      "categoryId",
+    ]);
+    // console.log(data);
+
+    res.status(200).send({
+      error: false,
+      details: await res.getModelListDetails(Blog, {userId}),
+      data,
+    });
+    },
+    getPublishedBlogsData: async (req, res) => {
+    /*
+      #swagger.tags = ["Blogs"]
+      #swagger.summary = "Get Single User Blogs"
+      #swagger.description = "Fetch all blogs for a specific user."
+      #swagger.parameters['userId'] = {
+          in: 'path',
+          required: true,
+          description: 'ID of the user to fetch blogs for.',
+          type: 'string',
+        }
+    */
+
+    const publishedBlogs = await res.getModelList(Blog, {isPublish:true}, [
+      "categoryId","userId"
+    ]);
+    // console.log(data);
+
+    res.status(200).send({
+      error: false,
+      details: await res.getModelListDetails(Blog, {isPublish:true}),
+      data: publishedBlogs,
+    });
+    },
+    
 }
