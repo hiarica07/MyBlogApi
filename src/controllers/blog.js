@@ -181,9 +181,9 @@ module.exports = {
     getPublishedBlogsData: async (req, res) => {
     /*
       #swagger.tags = ["Blogs"]
-      #swagger.summary = "Get Single User Blogs"
-      #swagger.description = "Fetch all blogs for a specific user."
-      #swagger.parameters['userId'] = {
+      #swagger.summary = "Get Published Blogs"
+      #swagger.description = "Fetch Published blogs"
+      #swagger.parameters['isPublish'] = {
           in: 'path',
           required: true,
           description: 'ID of the user to fetch blogs for.',
