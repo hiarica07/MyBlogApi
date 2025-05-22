@@ -125,24 +125,68 @@
     },
     "/users/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "summary": "List Users",
+        "description": "\r  You can use <u>filter[] & search[] & sort[] & page & limit</u> queries with endpoint.\r  <ul> Examples:\r   <li>URL/?<b>filter[field1]=value1&filter[field2]=value2</b></li>\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=asc&sort[field2]=desc</b></li>\r   <li>URL/?<b>limit=10&page=1</b></li>\r  </ul>\r  ",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       },
       "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create User",
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "test"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "1234"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@site.com"
+                },
+                "firstName": {
+                  "type": "string",
+                  "example": "test"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "test"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       }
     },
     "/users/{id}": {
       "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Read User",
         "description": "",
         "parameters": [
           {
@@ -153,12 +197,16 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       },
       "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update User",
         "description": "",
         "parameters": [
           {
@@ -166,15 +214,49 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "test"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "1234"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@site.com"
+                },
+                "firstName": {
+                  "type": "string",
+                  "example": "test"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "test"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       },
       "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Delete User",
         "description": "",
         "parameters": [
           {
@@ -185,12 +267,19 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       },
       "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update User",
         "description": "",
         "parameters": [
           {
@@ -198,11 +287,137 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "test"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "1234"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@site.com"
+                },
+                "firstName": {
+                  "type": "string",
+                  "example": "test"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "test"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/users/{id}/updateMe": {
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update User",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "test"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "test"
+                },
+                "image": {
+                  "type": "string",
+                  "example": "test"
+                },
+                "city": {
+                  "type": "string",
+                  "example": "test"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "test"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/users/{id}/changeMyPassword": {
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update User",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "currentPassword": {
+                  "type": "string",
+                  "example": "***"
+                },
+                "newPassword": {
+                  "type": "string",
+                  "example": "***"
+                },
+                "retypePassword": {
+                  "type": "string",
+                  "example": "***"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
           }
         }
       }
@@ -287,6 +502,52 @@
         "responses": {
           "default": {
             "description": ""
+          }
+        }
+      }
+    },
+    "/blogs/userBlogs": {
+      "get": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Get Single User Blogs",
+        "description": "Fetch all blogs for a specific user.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the user to fetch blogs for.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/blogs/publishedBlogs": {
+      "get": {
+        "tags": [
+          "Blogs"
+        ],
+        "summary": "Get Published Blogs",
+        "description": "Fetch Published blogs",
+        "parameters": [
+          {
+            "name": "isPublish",
+            "in": "path",
+            "required": true,
+            "description": "ID of the user to fetch blogs for.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -667,6 +928,29 @@
           }
         }
       }
+    },
+    "/comments/blog/{blogId}": {
+      "get": {
+        "tags": [
+          "Comments"
+        ],
+        "summary": "Get Single Blog Comments",
+        "description": "Fetch all comments/reviews for a specific blog.",
+        "parameters": [
+          {
+            "name": "blogId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the blog to fetch comments for."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -684,8 +968,14 @@
               "example": true
             },
             "required": {
-              "type": "boolean",
-              "example": true
+              "type": "array",
+              "example": [
+                true,
+                "Username is required"
+              ],
+              "items": {
+                "type": "string"
+              }
             },
             "unique": {
               "type": "boolean",
@@ -748,8 +1038,14 @@
               "example": true
             },
             "required": {
-              "type": "boolean",
-              "example": true
+              "type": "array",
+              "example": [
+                true,
+                "First name is required"
+              ],
+              "items": {
+                "type": "string"
+              }
             }
           }
         },
@@ -764,8 +1060,14 @@
               "example": true
             },
             "required": {
-              "type": "boolean",
-              "example": true
+              "type": "array",
+              "example": [
+                true,
+                "Last name is required"
+              ],
+              "items": {
+                "type": "string"
+              }
             }
           }
         },
