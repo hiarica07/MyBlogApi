@@ -18,6 +18,7 @@ router.route("/:id")
     .delete(blog.delete)
 router.get("/:id/getLike", blog.getLike)
 router.post("/:id/postLike", blog.postLike)
+router.get("/:userId/stats", blog.stats)
 
 // router.get("/:id/comments", blog.comments)
 /* ------------------------------------------------------- */
